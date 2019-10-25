@@ -83,7 +83,12 @@ export default class Demo extends Vue {
   }
 
   // 任意值
-  showAnyTypeCode () {}
+  showAnyTypeCode () {
+    let myFavoriteNumber: any = 'seven';
+    console.log(`myFavoriteNumber = ${myFavoriteNumber}`);
+    myFavoriteNumber = 7;
+    console.log(`myFavoriteNumber = ${myFavoriteNumber}`);
+  }
 
   /* ----------------------5. 服务请求函数------------------------ */
 }
