@@ -132,7 +132,14 @@ export default class Demo extends Vue {
   }
 
   // 数组类型
-  showArrayCode (): void {}
+  showArrayCode (): void {
+    let aFoo: number[] = [1, 2, 3, 4, 5, 6];
+    // let aFoo: number[] = [1, 2, 3, 4, 5, '6'];
+    console.log('aFoo = ' + aFoo);
+
+    let aGoo: Array<number> = [7, 8, 9, 10, 11];
+    console.log('aGoo = ' + aGoo);
+  }
 
   /* ----------------------5. 服务请求函数------------------------ */
 }
