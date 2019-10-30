@@ -57,6 +57,10 @@ export default class Demo extends Vue {
 
     // 对象类型接口
     this.showInterfaceCode();
+
+    // 函数类型
+    let name = this.showFuncTypeCode();
+    console.log('name = ' + name);
   }
 
   // 原始数据类型
@@ -139,6 +143,18 @@ export default class Demo extends Vue {
 
     let aGoo: Array<number> = [7, 8, 9, 10, 11];
     console.log('aGoo = ' + aGoo);
+
+    let aHoo: Array<any> = ['A', 0, true, { url: 'www.shanzhen.me' }]; // any[]
+    console.log('aHoo = ' + aHoo);
+  }
+
+  // 函数类型
+  showFuncTypeCode (firstName: string = 'cat', lastName?: string): string {
+    if (lastName) {
+      return firstName + ' ' + lastName;
+    } else {
+      return firstName;
+    }
   }
 
   /* ----------------------5. 服务请求函数------------------------ */
