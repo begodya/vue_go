@@ -42,16 +42,25 @@ export default class Demo extends Vue {
   /* ----------------------3. 事件调用函数------------------------ */
 
   /* ----------------------4. 内部功能函数------------------------ */
-  showMeCode () {
+  showMeCode (): void {
     // 原始数据类型
     this.showDataTypeCode();
 
     // 任意值
     this.showAnyTypeCode();
+
+    // 类型推论
+    this.showTypeInferenceCode();
+
+    // 联合类型
+    this.showUnionTypesCode();
+
+    // 对象类型接口
+    this.showInterfaceCode();
   }
 
   // 原始数据类型
-  showDataTypeCode () {
+  showDataTypeCode (): void {
     // boolean
     let isDone: boolean = false;
     // let createdByNewBoolean1: Boolean = new Boolean(1);
@@ -83,12 +92,47 @@ export default class Demo extends Vue {
   }
 
   // 任意值
-  showAnyTypeCode () {
+  showAnyTypeCode (): void {
     let myFavoriteNumber: any = 'seven';
     console.log(`myFavoriteNumber = ${myFavoriteNumber}`);
     myFavoriteNumber = 7;
     console.log(`myFavoriteNumber = ${myFavoriteNumber}`);
   }
+
+  // 类型推论
+  showTypeInferenceCode (): void {
+    // let myFavoriteNumber = 'SEVEN';
+    // myFavoriteNumber = 7;
+
+    let myFavoriteNumber;
+    myFavoriteNumber = 'seven';
+    myFavoriteNumber = 7;
+  }
+
+  // 联合类型
+  showUnionTypesCode (): void {
+    let myFavoriteNumber: string | number;
+    myFavoriteNumber = 'seven';
+    myFavoriteNumber = 7;
+    // myFavoriteNumber = true;
+  }
+
+  // 对象类型接口
+  showInterfaceCode (): void {
+    interface Person {
+      name: string;
+      age: number;
+      gender?: string;
+    }
+
+    let tom: Person = {
+      name: 'Tom',
+      age: 18
+    };
+  }
+
+  // 数组类型
+  showArrayCode (): void {}
 
   /* ----------------------5. 服务请求函数------------------------ */
 }
