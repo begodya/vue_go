@@ -61,6 +61,10 @@ export default class Demo extends Vue {
     // 函数类型
     let name = this.showFuncTypeCode();
     console.log('name = ' + name);
+
+    // 类型断言
+    let type = this.showTypeAssertionCode(7);
+    console.log('type = ' + type);
   }
 
   // 原始数据类型
@@ -154,6 +158,15 @@ export default class Demo extends Vue {
       return firstName + ' ' + lastName;
     } else {
       return firstName;
+    }
+  }
+
+  // 类型断言：不是类型转换
+  showTypeAssertionCode (something: string | number): number {
+    if ((something as string).length) {
+      return (something as string).length;
+    } else {
+      return something.toString.length;
     }
   }
 
