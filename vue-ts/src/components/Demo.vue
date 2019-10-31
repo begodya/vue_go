@@ -6,6 +6,7 @@
     <div>1. 什么是 Typescript?</div>
     <div>2. Typescript 的优缺点</div>
     <div>3. Typescript 基础</div>
+    <div>4. Typescript 进阶</div>
   </div>
 </template>
 
@@ -65,6 +66,12 @@ export default class Demo extends Vue {
     // 类型断言
     let type = this.showTypeAssertionCode(7);
     console.log('type = ' + type);
+
+    // 类型别名
+    this.showTypeAliasCode();
+
+    // 枚举类型
+    this.showEnumCode();
   }
 
   // 原始数据类型
@@ -152,7 +159,7 @@ export default class Demo extends Vue {
     console.log('aHoo = ' + aHoo);
   }
 
-  // 函数类型
+  // 函数类型：默认值、可选型
   showFuncTypeCode (firstName: string = 'cat', lastName?: string): string {
     if (lastName) {
       return firstName + ' ' + lastName;
@@ -161,7 +168,7 @@ export default class Demo extends Vue {
     }
   }
 
-  // 类型断言：不是类型转换
+  // 类型断言：不是类型转换，而是手动指定一个类型
   showTypeAssertionCode (something: string | number): number {
     console.log('something = ' + something);
     if ((something as string).length) {
@@ -169,6 +176,56 @@ export default class Demo extends Vue {
     } else {
       return something.toString.length;
     }
+  }
+
+  /* Typescript 进阶 */
+
+  // 类型别名：常用于联合类型
+  showTypeAliasCode (): void {
+    type TypeAlias = string | number;
+    let name: TypeAlias = 'begodya';
+    console.log('name = ' + name);
+    let age: TypeAlias = 18;
+    console.log('age = ' + age);
+  }
+
+  // 元祖：合并不同类型的对象、any[]
+  showTupleCode (): void {
+    let tom: [string, number] = ['Tom', 18];
+    // tom.push('male');
+    // tom.push(true);
+    console.log('tom = ' + tom[0] + tom[1]);
+
+    let jerry: any[] = ['Jerry', 10];
+    jerry.push('male');
+    jerry.push(true);
+    console.log('jerry = ' + jerry[0] + jerry[1]);
+  }
+
+  // 枚举类型：用于取值限定在一定范围内的场景
+  showEnumCode (): void {
+    enum Days {
+      Sun = 7,
+      Mon = 1,
+      Tue,
+      Wed,
+      Thu,
+      Fri,
+      Sat
+    }
+
+    console.log('Days =', Days.Sun);
+  }
+
+  // 类
+  showClassCode (): void {
+    // 类：定义了一个事物的抽象特点，包括属性和方法
+    // 对象：类的实例，通过 new 生成
+    // 面向对象三大特性：封装、继承、多态
+    // 存取器：用于改变属性的读取和赋值行为
+    // 修饰符：关键字用于限定成员或类型的性质
+    // 抽象类：其他类继承的基类，不应被实例化，抽象方法必须在子类中实现
+    // 接口：不同类之间公有的属性或方法，可抽象成一个接口
   }
 
   /* ----------------------5. 服务请求函数------------------------ */
