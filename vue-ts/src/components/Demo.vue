@@ -163,6 +163,7 @@ export default class Demo extends Vue {
 
   // 类型断言：不是类型转换
   showTypeAssertionCode (something: string | number): number {
+    console.log('something = ' + something);
     if ((something as string).length) {
       return (something as string).length;
     } else {
