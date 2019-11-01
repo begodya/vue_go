@@ -72,6 +72,12 @@ export default class Demo extends Vue {
 
     // 枚举类型
     this.showEnumCode();
+
+    // 类
+    this.showClassCode();
+
+    // 类与接口
+    this.showClassInterfaceCode();
   }
 
   // 原始数据类型
@@ -189,7 +195,7 @@ export default class Demo extends Vue {
     console.log('age = ' + age);
   }
 
-  // 元祖：合并不同类型的对象、any[]
+  // 元组：合并不同类型的对象、any[]
   showTupleCode (): void {
     let tom: [string, number] = ['Tom', 18];
     // tom.push('male');
@@ -258,6 +264,31 @@ export default class Demo extends Vue {
 
     let cat = new Cat('Tom');
     console.log(cat.sayHi());
+  }
+
+  // 类与接口
+  showClassInterfaceCode (): void {
+    // 类实现接口
+    // 接口继承接口
+    // 接口继承类
+
+    interface Voice {
+      say(): void;
+    }
+
+    class Animal {}
+
+    class Dog extends Animal implements Voice {
+      say () {
+        console.log('汪汪汪~~~~');
+      }
+    }
+
+    class Person implements Voice {
+      say () {
+        console.log('Come here~');
+      }
+    }
   }
 
   /* ----------------------5. 服务请求函数------------------------ */
