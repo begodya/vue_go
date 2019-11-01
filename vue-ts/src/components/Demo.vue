@@ -78,6 +78,9 @@ export default class Demo extends Vue {
 
     // 类与接口
     this.showClassInterfaceCode();
+
+    // 泛型
+    this.showGenericsCode();
   }
 
   // 原始数据类型
@@ -290,6 +293,9 @@ export default class Demo extends Vue {
       }
     }
   }
+
+  // 泛型
+  showGenericsCode (): void {}
 
   /* ----------------------5. 服务请求函数------------------------ */
 }
