@@ -16,7 +16,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class Demo extends Vue {
-  sWord: string = 'Hello Typescript!'; // sWord 内部属性
+  private sWord: string = 'Hello Typescript!'; // sWord 内部属性
 
   /* ----------------------1. 生命周期函数------------------------ */
   created () {
@@ -223,9 +223,41 @@ export default class Demo extends Vue {
     // 对象：类的实例，通过 new 生成
     // 面向对象三大特性：封装、继承、多态
     // 存取器：用于改变属性的读取和赋值行为
-    // 修饰符：关键字用于限定成员或类型的性质
+    // 修饰符：关键字用于限定成员或类型的性质 private/public/protect
     // 抽象类：其他类继承的基类，不应被实例化，抽象方法必须在子类中实现
     // 接口：不同类之间公有的属性或方法，可抽象成一个接口
+
+    class Animal {
+      public name: string;
+      public constructor (name: string) {
+        this.name = name;
+      }
+
+      public sayHi (): string {
+        return `My name is ${name}`;
+      }
+
+      // abstract public sayHi();
+    }
+
+    let animal = new Animal('Mouse');
+    console.log(animal.name);
+    animal.name = 'Jerry';
+    console.log(animal.name);
+
+    class Cat extends Animal {
+      constructor (name: string) {
+        super(name);
+        console.log(`Hello ${name}`);
+      }
+
+      public sayHi (): string {
+        return `Nice to meet you, I'm ${name}`;
+      }
+    }
+
+    let cat = new Cat('Tom');
+    console.log(cat.sayHi());
   }
 
   /* ----------------------5. 服务请求函数------------------------ */
