@@ -80,7 +80,8 @@ export default class Demo extends Vue {
     this.showClassInterfaceCode();
 
     // 泛型
-    this.showGenericsCode();
+    let genericsCode = this.showGenericsCode([7, 'seven']);
+    console.log('genericsCode = ' + genericsCode);
   }
 
   // 原始数据类型
@@ -294,8 +295,10 @@ export default class Demo extends Vue {
     }
   }
 
-  // 泛型
-  showGenericsCode (): void {}
+  // 泛型：输入与输出保持类型一致：Array<any>、Array<T>
+  showGenericsCode<T, U> (tuple: [T, U]): [U, T] {
+    return [tuple[1], tuple[0]];
+  }
 
   /* ----------------------5. 服务请求函数------------------------ */
 }
