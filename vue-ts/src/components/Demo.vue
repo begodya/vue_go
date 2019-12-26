@@ -2,7 +2,7 @@
 /* ------------------------------------------- template ------------------------------------------- */
 <template>
   <div>
-    <div>{{sWord}}</div>
+    <div @click='actionChangeWord'>{{word}}</div>
     <div>1. 什么是 Typescript?</div>
     <div>2. Typescript 的优缺点</div>
     <div>3. Typescript 基础</div>
@@ -16,7 +16,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class Demo extends Vue {
-  private sWord: string = 'Hello Typescript!'; // sWord 内部属性
+  private word: string = 'Hello Typescript 3.1!'; // word 内部属性
 
   /* ----------------------1. 生命周期函数------------------------ */
   created () {
@@ -24,8 +24,8 @@ export default class Demo extends Vue {
   }
 
   /* ----------------------2. 监听属性函数------------------------ */
-  // 监听 sWord 是否发生改变
-  @Watch('sWord')
+  // 监听 word 是否发生改变
+  @Watch('word')
   onChangeValue (newV: string, oldV: string) {
     if (newV !== oldV) {
       alert('监控状态已经发生改变！！！');
@@ -35,12 +35,15 @@ export default class Demo extends Vue {
   }
 
   mounted (): void {
-    setTimeout(() => {
-      this.sWord = 'Typescript Demo页面';
-    }, 1500);
+    // setTimeout(() => {
+    //   this.word = 'Typescript Demo页面';
+    // }, 1500);
   }
 
   /* ----------------------3. 事件调用函数------------------------ */
+  actionChangeWord (): void {
+    this.word = 'Typescript Demo页面';
+  }
 
   /* ----------------------4. 内部功能函数------------------------ */
   showMeCode (): void {
@@ -82,6 +85,12 @@ export default class Demo extends Vue {
     // 泛型
     let genericsCode = this.showGenericsCode([7, 'seven']);
     console.log('genericsCode = ' + genericsCode);
+
+    // 模块
+    // 命名空间
+    // 模块解析
+    // 声明合并
+    // JSX
   }
 
   // 原始数据类型
@@ -106,9 +115,9 @@ export default class Demo extends Vue {
     // 字符串
     let sName: string = 'begodya';
     let nAge: number = 17;
-    let sSentence: string = `Hello, my name is ${sName}. I'll be ${nAge +
+    let sentence: string = `Hello, my name is ${sName}. I'll be ${nAge +
       1} years old next month.`;
-    console.log(sSentence);
+    console.log(sentence);
 
     // 空值、Null、Undefined
     let unusale: void;
