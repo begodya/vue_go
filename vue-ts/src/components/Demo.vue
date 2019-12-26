@@ -310,6 +310,9 @@ export default class Demo extends Vue {
   }
 
   /* ----------------------5. 服务请求函数------------------------ */
+  ajaxSomething () {
+
+  }
 }
 </script>
 
